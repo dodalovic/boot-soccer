@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+    <link th:href="@{/css/bootstrap.min.css}" href="#" rel="stylesheet"/>
+    <link th:href="@{/css/heroic-features.css}" href="#" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a th:href="@{/}" class="navbar-brand" href="#">Home</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <header class="well well-lg hero-spacer">
+        <h1 th:text="'Team name: ' + ${team.name}">Team</h1>
+        <p th:text="'Squad market value: ' + (${team.squadMarketValue} ?: 'Unknown')">Market value</p>
+        <div class="row text-center">
+            <div>
+                <img width="200" th:if="${team.crestUrl} != null" th:src="${team.crestUrl}"/>
+            </div>
+        </div>
+    </header>
+    <hr/>
+
+    <div class="row text-center">
+        <div th:each="player, iterationStatus : ${team.players}" class="col-md-3 col-sm-6 hero-feature well">
+            <h4>Details:</h4>
+            <p th:text="'Name: ' + ${player.name}"></p>
+            <p th:text="'Position: ' + ${player.position}"></p>
+            <p th:text="'Jersey number: ' + ${player.jerseyNumber}"></p>
+            <p th:text="'Date of birth: ' + ${player.dateOfBirth}"></p>
+            <p th:text="'Nationality: ' + ${player.nationality}"></p>
+            <p th:text="'Contract until: ' + ${player.contractUntil}"></p>
+            <p th:text="'Market value: ' + ${player.marketValue}"></p>
+        </div>
+    </div>
+
+    <hr/>
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Your Website 2014</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<script th:src="@{/js/jquery.js}" src="#"></script>
+<script th:src="@{/js/bootstrap.min.js}" src="#"></script>
+</body>
+</html>
